@@ -29,11 +29,14 @@ df_train['date_useful'] = df_train['date_useful'].astype('|f4')
 # Removed ID, View
 
 # sqft_living15, grade, sqft_living, 
+features = df_train.filter(["sqft_living15", "grade", "sqft_living", "bathrooms", "sqft_lot", "sqft_above", "price"])
 
-features = df_train.filter(['bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot',
-       'floors', 'waterfront', 'condition', 'grade', 'sqft_above',
-       'sqft_basement', 'yr_built', 'yr_renovated', 'zipcode', 'lat', 'long',
-       'sqft_living15', 'sqft_lot15', 'price', 'date_useful'])
+# features = df_train.filter(['bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot',
+#        'floors', 'waterfront', 'condition', 'grade', 'sqft_above',
+#        'sqft_basement', 'yr_built', 'yr_renovated', 'zipcode', 'lat', 'long',
+#        'sqft_living15', 'sqft_lot15', 'price', 'date_useful'])
+
+
 
 print(df_train.head())
 
@@ -55,13 +58,13 @@ y_pred = vr.predict(X_test)
 print(f"Model Score: {vr.score(X_test, y_test)}")
 print(f" Square Root Mean Squared Error: {math.sqrt(mean_squared_error(y_pred, y_test))}")
 print(f"R2 score: {r2_score(y_pred, y_test)}")
-
+''''
 mse, bias, var = bias_variance_decomp(vr, X_train, y_train, X_test, y_test, loss='mse', num_rounds=200, random_seed=1)
 # summarize results
 print('MSE: %.3f' % mse)
 print('Bias: %.3f' % bias)
 print('Variance: %.3f' % var)
-
+'''
 
 
 # %%
